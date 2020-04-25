@@ -148,4 +148,4 @@ T.get('search/tweets', params, function(err, data) {
   // grab & retweet as soon as program is running...
 
   // retweet in every 5 minutes
-  setInterval(retweet, 500000);
+  //setInterval(retweet, 500000);
