@@ -56,7 +56,7 @@ stream.on('tweet', function (tweet) {
     // If the tweet matches all the above criteria, we send our reply
     // Note - here the tweet parameter refers to the tweet we're replying to.
     console.log('before');
-wait(60000);  //7 seconds in milliseconds
+//wait(60000);  //7 seconds in milliseconds
 
     sendReply(tweet);
     console.log('after');
@@ -81,8 +81,8 @@ function sendReply(tweet){
     // All our tweets will have the same instructions on how to quit twitter
     const instructions = '@uberBhakt'
     console.log('before1111');
-    wait(60000);  //7 seconds in milliseconds
-             
+    //wait(60000);  //7 seconds in milliseconds
+    //await new Promise(resolve => setTimeout(resolve, 60000));     
     // Now we create the reply - the handle + a random reply from our set of predefined replies + the instructions on how to quit
     var response =  '@' + screenName +' ' + instructions + ' ' + replies[Math.floor(Math.random() * replies.length)] + ' ' +Math.floor(Math.random() * 10000)+'%'
             
