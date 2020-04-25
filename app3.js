@@ -8,7 +8,7 @@ var T = new Twit(config);
 
 
 const replies = [
-    "फ़ॉलो karo","फ़ॉलो sabko karenge","Guaranteed FB","फ़ॉलोबेक pakka","फ़ॉलो permanent","फ़ॉलो back sabko milega","फ़ॉलो karo i FB","I FB"
+    "फ़ॉलो karo","फ़ॉलो sabko karenge","Guaranteed FB","फॉलो करें और फॉलो बैक पाएं","फ़ॉलोबेक pakka","फ़ॉलो permanent","फ़ॉलो back sabko milega","फ़ॉलो karo i FB","I FB"
     ]
 //const stream = T.stream('statuses/filter', {track: 'फ़ॉलोबेक','follow back'},{ follow: '110156719' });
 
@@ -84,7 +84,7 @@ function sendReply(tweet){
     wait(60000);  //7 seconds in milliseconds
              
     // Now we create the reply - the handle + a random reply from our set of predefined replies + the instructions on how to quit
-    var response =  '@' + screenName +' ' + instructions + ' ' + replies[Math.floor(Math.random() * replies.length)] + ' ' +Math.floor(Math.random() * 1000)+'%'
+    var response =  '@' + screenName +' ' + instructions + ' ' + replies[Math.floor(Math.random() * replies.length)] + ' ' +Math.floor(Math.random() * 10000)+'%'
             
         T.post('statuses/update', {
             // To reply we need the id of tweet we're replying to.
