@@ -179,11 +179,12 @@ T.get('search/tweets', params, function(err, data) {
 
 const express = require('express');
 const app = express();
+cron.schedule('*/25 * * * *', () => {
 app.get("/", (request, response) => {
   console.log(Date.now() + " Ping Received");
   response.sendStatus(200);
 });
 app.listen(process.env.PORT);
-setInterval(() => {
+
   http.get(`https://twitbo.herokuapp.com/`);
-}, 1200000);
+})
