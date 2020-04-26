@@ -16,7 +16,7 @@ const termsToTrack = ["%फ़ॉलोबेक(",'फ़ॉलोबेक','�
 const special=[ "+", "-", "&&", "||", "!", "(", ")", "{", "}", "[", "]", "^",
 "~", "*", "?", ":","\"","\\"]
 const emoji=["✌","😂","😝","😁","😱","👉","🙌","🍻","🔥","🌈","☀","🎈","🌹","💄","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","🍀","👀","🚗","🍎","💝","💙","👌","❤","😍","😉","😓","😳","💪","💩","🍸","🔑","💖","🌟","🎉","🌺","🎶","👠","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","💣","👃","👂","🍓","💘","💜","👊","💋","😘","😜","😵","🙏","👋","🚽","💃","💎","🚀","🌙","🎁","⛄","🌊","⛵","🏀","🎱","💰","👶","👸","🐰","🐷","🐍","🐫","🔫","👄","🚲","🍉","💛","💚"]
-   setInterval(() => {
+ 
        const stream = T.stream('statuses/filter', {track:termsToTrack, tweet_mode:'extended'  })
     
     function wait(ms){
@@ -81,12 +81,13 @@ function sendReply(tweet){
     // All our tweets will have the same instructions on how to quit twitter
     const instructions = '@uberBhakt'
     console.log('before1111');
-   // wait(60000);  //7 seconds in milliseconds
+    wait(20000);  //7 seconds in milliseconds
     //await new Promise(resolve => setTimeout(resolve, 60000));     
    // const delay = require('delay');
-
+    console.log("ghchg")
+    wait(20000);
     // Now we create the reply - the handle + a random reply from our set of predefined replies + the instructions on how to quit
-    var response =  '@' + screenName +' '+ special[Math.floor(Math.random() * replies.length)]+ instructions + ' ' + replies[Math.floor(Math.random() * replies.length)] + ' ' +Math.floor(Math.random() * 10000)+'%'+emoji[Math.floor(Math.random() * replies.length)]
+    var response =  '@' + screenName +' '+ special[Math.floor(Math.random() * replies.length)]+ ' ' + replies[Math.floor(Math.random() * replies.length)] + ' ' +Math.floor(Math.random() * 10000)+'%'+emoji[Math.floor(Math.random() * replies.length)]
             
         T.post('statuses/update', {
             // To reply we need the id of tweet we're replying to.
@@ -96,10 +97,10 @@ function sendReply(tweet){
             // After we tweet we use a callback function to check if our tweet has been succesful.
         })
         console.log('before5555');
-        stream.stop()
+       // stream.stop()
       
     }
-},39000)
+
     
 
 
