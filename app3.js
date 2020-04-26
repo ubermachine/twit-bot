@@ -168,24 +168,10 @@ T.get('search/tweets', params, function(err, data) {
 
   // retweet in every 5 minutes
   //setInterval(retweet, 500000);
-
-  var http = require('http');
-  var fileSystem = require('fs');
-  
-  var server = http.createServer(function(req, resp){
-      fileSystem.readFile('./index.html', function(error, fileContent){
-          if(error){
-              resp.writeHead(500, {'Content-Type': 'text/plain'});
-              resp.end('Error');
-          }
-          else{
-              resp.writeHead(200, {'Content-Type': 'text/html'});
-              resp.write(fileContent);
-              resp.end();
-          }
-      });
+  const http = require('http');const PORT = process.env.PORT || 5000;const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World\n');
+  });server.listen(PORT, () => {
+    console.log(`Server running on ${PORT}/`);
   });
-  
-  server.listen(8080);
-  
-  console.log('Listening at: localhost:8080');
