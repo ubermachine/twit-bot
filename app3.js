@@ -8,14 +8,17 @@ var T = new Twit(config);
 
 
 const replies = [
-    "फ़ॉलो karo","फ़ॉलो sabko karenge","Guaranteed FB","फॉलो करें और फॉलो बैक पाएं","फ़ॉलोबेक pakka","फ़ॉलो permanent","फ़ॉलो back sabko milega","फ़ॉलो karo i FB","I FB"
+    "फ़ॉलो karo","फ़ॉलो kariye FB jarur milega","Guaranteed FB","फॉलो करें और फॉलो बैक पाएं","फ़ॉलोबेक pakka","फ़ॉलो permanent","फ़ॉलो back sabko milega","फ़ॉलो karo i FB","I FB","I follow back","Apko hi follow back milega","hume follow karo"
     ]
 //const stream = T.stream('statuses/filter', {track: 'फ़ॉलोबेक','follow back'},{ follow: '110156719' });
 
-const termsToTrack = ['फ़ॉलोबेक','फॉलो']
-
-
-    const stream = T.stream('statuses/filter', {track:termsToTrack, tweet_mode:'extended'  })
+const termsToTrack = ["%फ़ॉलोबेक(",'फ़ॉलोबेक','फॉलो']
+const special=[ "+", "-", "&&", "||", "!", "(", ")", "{", "}", "[", "]", "^",
+"~", "*", "?", ":","\"","\\"]
+const emoji=["✌","😂","😝","😁","😱","👉","🙌","🍻","🔥","🌈","☀","🎈","🌹","💄","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","🍀","👀","🚗","🍎","💝","💙","👌","❤","😍","😉","😓","😳","💪","💩","🍸","🔑","💖","🌟","🎉","🌺","🎶","👠","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","💣","👃","👂","🍓","💘","💜","👊","💋","😘","😜","😵","🙏","👋","🚽","💃","💎","🚀","🌙","🎁","⛄","🌊","⛵","🏀","🎱","💰","👶","👸","🐰","🐷","🐍","🐫","🔫","👄","🚲","🍉","💛","💚"]
+   setInterval(() => {
+       const stream = T.stream('statuses/filter', {track:termsToTrack, tweet_mode:'extended'  })
+    
     function wait(ms){
         var start = new Date().getTime();
         var end = start;
@@ -28,14 +31,11 @@ const termsToTrack = ['फ़ॉलोबेक','फॉलो']
 
 
 function responseCallback (err, data, response) {
-
-
-
  console.log(err);
 
 
-
 }
+
 stream.on('tweet', function (tweet) {
 
     // We perform some checks before we send anyone a tweet.
@@ -56,7 +56,7 @@ stream.on('tweet', function (tweet) {
     // If the tweet matches all the above criteria, we send our reply
     // Note - here the tweet parameter refers to the tweet we're replying to.
     console.log('before');
-wait(60000);  //7 seconds in milliseconds
+//wait(60000);  //7 seconds in milliseconds
 
     sendReply(tweet);
     console.log('after');
@@ -81,12 +81,12 @@ function sendReply(tweet){
     // All our tweets will have the same instructions on how to quit twitter
     const instructions = '@uberBhakt'
     console.log('before1111');
-    wait(60000);  //7 seconds in milliseconds
+   // wait(60000);  //7 seconds in milliseconds
     //await new Promise(resolve => setTimeout(resolve, 60000));     
-    const delay = require('delay');
+   // const delay = require('delay');
 
     // Now we create the reply - the handle + a random reply from our set of predefined replies + the instructions on how to quit
-    var response =  '@' + screenName +' ' + instructions + ' ' + replies[Math.floor(Math.random() * replies.length)] + ' ' +Math.floor(Math.random() * 10000)+'%'
+    var response =  '@' + screenName +' '+ special[Math.floor(Math.random() * replies.length)]+ instructions + ' ' + replies[Math.floor(Math.random() * replies.length)] + ' ' +Math.floor(Math.random() * 10000)+'%'+emoji[Math.floor(Math.random() * replies.length)]
             
         T.post('statuses/update', {
             // To reply we need the id of tweet we're replying to.
@@ -96,9 +96,10 @@ function sendReply(tweet){
             // After we tweet we use a callback function to check if our tweet has been succesful.
         })
         console.log('before5555');
-
+        stream.stop()
       
     }
+},39000)
     
 
 
