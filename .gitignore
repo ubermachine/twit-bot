@@ -9,7 +9,7 @@ package-lock.json
 .vscode
 # testing
 /coverage
-congig.js
+/congig.js
 # production
 /build
 
