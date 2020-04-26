@@ -6,11 +6,14 @@ var config = require("./congig.js");
 
 var cron = require('node-cron');
  
-cron.schedule("*/50 * * * * *", () => {
+cron.schedule('* * * * *', () => {
   console.log('running a task every minute');
 
 
 var T = new Twit(config);
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 const replies = [
     "फ़ॉलो karo","फ़ॉलो kariye FB jarur milega","Guaranteed FB","फॉलो करें और फॉलो बैक पाएं","फ़ॉलोबेक pakka","फ़ॉलो permanent","फ़ॉलो back sabko milega","फ़ॉलो karo i FB","I FB","I follow back","Apko hi follow back milega","hume follow karo"
