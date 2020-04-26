@@ -6,7 +6,7 @@ var config = require("./congig.js");
 
 var cron = require('node-cron');
  
-cron.schedule('*/5 * * * *', () => {
+cron.schedule('* * * * *', () => {
   console.log('running a task every minute');
 
 
@@ -18,6 +18,14 @@ function sleep(ms) {
 const replies = [
     "फ़ॉलो karo","फ़ॉलो kariye FB jarur milega","Guaranteed FB","फॉलो करें और फॉलो बैक पाएं","फ़ॉलोबेक pakka","फ़ॉलो permanent","फ़ॉलो back sabko milega","फ़ॉलो karo i FB","I FB","I follow back","Apko hi follow back milega","hume follow karo"
     ]
+
+const khan=[
+    'khan',
+    'ali',
+    'ansari','masoodi', 'shaikh', 'fahrooqi','faraz',
+    'osmani', 'siddiqui',
+    'muhammad', 'ahmad', 'mustapha', 'ali', 'hassa', 'hussain', 'malik' 
+]
 //const stream = T.stream('statuses/filter', {track: 'फ़ॉलोबेक','follow back'},{ follow: '110156719' });
 
 const termsToTrack = ["%फ़ॉलोबेक(",'फ़ॉलोबेक','फॉलो']
@@ -77,9 +85,10 @@ stream.on('tweet', function (tweet) {
     // A function to check if the tweets have exact matches for our search terms.
     function isTweetExactMatch(text){
         // Make sure the text is in lowercase
-        //text = text.toLowerCase()
+        text = text.toLowerCase()
+        
         // Check if tweet contains an exact match of the phrases we're looking for.
-        return termsToTrack.some(term => text.includes(term))
+        return (termsToTrack.some(term => text.includes(term)) && !khan.some(term => text.includes(term)))
     };
     
 function sendReply(tweet){
